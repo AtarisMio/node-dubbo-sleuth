@@ -44,7 +44,7 @@ tracing from http request
 
 ```ts
 //===================== app/middleware/tracing.ts =====================
-import { sleuth, Endpoint, Span, Tracing } from 'dubbo-sleuth';
+import { Endpoint, Span, Tracing } from 'dubbo-sleuth';
 import { Application, Context } from 'egg';
 import zone from 'zone-context';
 
@@ -72,7 +72,7 @@ export default (_config: any, app: Application) =>
         if (!ctx.body.success || ctx.body.err || ctx.body.error || ctx.body.code !== 0) {
             span.putTag('error', '1');
         }
-        span.putTage('result', ctx.body);
+        span.putTag('result', ctx.body);
         Tracing.logger.logSpan(span);
     };
 
@@ -87,7 +87,7 @@ import zone from 'zone-context';
             endpointHost: 'localhost',
             endpointPort: '9411'
         })({
-            createTraceId = tracer => {
+            createTraceId(tracer) {
                 const traceId = zone.get('traceId');
                 tracer.setId(traceId);
                 return tracer.createChildId();

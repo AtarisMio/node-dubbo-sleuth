@@ -1,5 +1,5 @@
 import debug from 'debug';
-import { BatchRecorder, Context, jsonEncoder as Encoder, JsonEncoder, Logger, Recorder, TraceId, Tracer } from 'zipkin';
+import { BatchRecorder, Context, InetAddress, jsonEncoder as Encoder, JsonEncoder, Logger, Recorder, TraceId, Tracer } from 'zipkin';
 import CLSContext from 'zipkin-context-cls';
 import { HttpLogger } from 'zipkin-transport-http';
 import { Ejector, IEjector } from './ejector';
@@ -64,6 +64,10 @@ export class Tracing {
 
     static set hasRootTracer(value: boolean) {
         Tracing._hasRootTracer = !!value;
+    }
+
+    static get ip() {
+        return InetAddress.getLocalAddress().ipv4();
     }
 
     private constructor(args: IConstructorArgs) {

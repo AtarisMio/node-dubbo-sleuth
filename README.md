@@ -65,7 +65,7 @@ export default (_config: any, app: Application) =>
  
         span.setTimestamp(ctx.starttime * 1000);
         span.setRemoteEndpoint(new Endpoint({ ipv4: ctx.ip }));
-        span.setLocalEndpoint(new Endpoint({ serviceName: app.config.name, port: ctx.protocol === 'http' ? 80 : 443 })); // maybe is arbitrary
+        span.setLocalEndpoint(new Endpoint({ serviceName: app.config.name, ipv4: Tracing.ip, port: ctx.protocol === 'http' ? 80 : 443 })); // maybe is arbitrary
  
         await next();
  

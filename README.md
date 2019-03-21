@@ -44,7 +44,7 @@ tracing from http request
 
 ```ts
 //===================== app/middleware/tracing.ts =====================
-import { Endpoint, Span, Tracing } from '@58qf/dubbo-sleuth';
+import { Endpoint, Span, Tracing } from 'dubbo-sleuth';
 import { Application, Context } from 'egg';
 import zone from 'zone-context';
 

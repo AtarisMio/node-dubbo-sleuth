@@ -1,6 +1,6 @@
 {
   "name": "dubbo-sleuth",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A zipkin sleuth impelement for dubbo2.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,7 +38,7 @@
     "@types/node": "^11.11.4",
     "@types/zipkin-context-cls": "^0.11.2",
     "@types/zipkin-transport-http": "^0.11.2",
-    "dubbo2.js": "^2.3.8",
+    "@58qf/dubbo2.js": "^2.3.0-alpha.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.3.4000"
   },

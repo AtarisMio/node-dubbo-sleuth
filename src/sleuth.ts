@@ -1,5 +1,5 @@
 import debug from 'debug';
-import { Context, java } from 'dubbo2.js';
+import { Context, java } from '@58qf/dubbo2.js';
 import { InetAddress, model, TraceId, Tracer } from 'zipkin';
 import { IConstructorArgs, Tracing } from './tracing';
 

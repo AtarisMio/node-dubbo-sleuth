@@ -26,7 +26,7 @@ dubbo-sleuth = dubbo2.js + zipkin-js
 
 ```ts
 //===================== app/dubbo/index.ts =====================
-import { sleuth } from 'dubbo-sleuth';
+import { sleuth } from '@58qf/dubbo-sleuth';
     // same as dubbo2.js config
     dubbo.use(
         sleuth({
@@ -84,7 +84,7 @@ export default (_config: any, app: Application) =>
 
 
 //===================== app/dubbo/index.ts =====================
-import { sleuth, Span } from 'dubbo-sleuth';
+import { sleuth, Span } from '@58qf/dubbo-sleuth';
 import zone from 'zone-context';
     // same as dubbo2.js config
     dubbo.use(

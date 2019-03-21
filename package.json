@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && tsc -p ."
+    "build": "npm run clean && tsc -p .",
+    "prepublish": "npm run build",
   },
   "repository": {
     "type": "git",

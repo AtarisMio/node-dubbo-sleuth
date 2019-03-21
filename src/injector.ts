@@ -1,5 +1,5 @@
-import { TraceId, HttpHeaders } from "zipkin";
-import debug from "debug";
+import debug from 'debug';
+import { HttpHeaders, TraceId } from 'zipkin';
 
 const log = debug('dubbo:sleuth:tracing');
 

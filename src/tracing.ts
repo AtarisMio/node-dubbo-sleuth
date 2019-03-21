@@ -2,6 +2,7 @@ import debug from 'debug';
 import { BatchRecorder, Context, jsonEncoder as Encoder, JsonEncoder, Logger, Recorder, TraceId, Tracer } from 'zipkin';
 import CLSContext from 'zipkin-context-cls';
 import { HttpLogger } from 'zipkin-transport-http';
+import { Ejector, IEjector } from './ejector';
 import { IInjector, Injector } from './injector';
 
 const log = debug('dubbo:sleuth:tracing');
@@ -20,11 +21,13 @@ export interface IConstructorArgs {
     jsonEncoder?: JsonEncoder;
     recorder?: Recorder;
     injector?: IInjector;
+    ejector?: IEjector;
 }
 export class Tracing {
     private static _tracer: Tracer;
     private static _logger: Logger;
     private static _injector: IInjector;
+    private static _ejector: IEjector;
     private static _hasRootTracer: boolean;
 
     static get tracer() {
@@ -48,8 +51,19 @@ export class Tracing {
         return Tracing._injector;
     }
 
+    static get ejector() {
+        if (!Tracing._ejector) {
+            throw Error('[uninitial] Tracing');
+        }
+        return Tracing._ejector;
+    }
+
     static get hasRootTracer() {
         return !!Tracing._hasRootTracer;
+    }
+
+    static set hasRootTracer(value: boolean) {
+        Tracing._hasRootTracer = !!value;
     }
 
     private constructor(args: IConstructorArgs) {
@@ -89,6 +103,11 @@ export class Tracing {
             Tracing._injector = args.injector;
         } else {
             Tracing._injector = new Injector();
+        }
+        if (args.ejector) {
+            Tracing._ejector = args.ejector;
+        } else {
+            Tracing._ejector = new Ejector();
         }
         return Tracing.tracer;
     }

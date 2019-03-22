@@ -51,7 +51,7 @@ import zone from 'zone-context';
 // you can config it match only /api/*
 export default (_config: any, app: Application) =>
     async (ctx: Context, next: Function) => {
-        const traceIdEjected = Tracing.ejector.eject(ctx);
+        const traceIdEjected = Tracing.ejector.eject(ctx.headers);
         const rootTraceId = traceIdEjected.getOrElse(() => Tracing.tracer.createRootId()); // get TraceId from Http Headers
         zone.setRootContext('traceId', rootTraceId);
         const span = new Span(rootTraceId);

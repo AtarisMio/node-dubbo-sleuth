@@ -30,12 +30,12 @@ export abstract class AbstractEjector implements IEjector {
         }
     }
 
-    public eject(ctx: any) {
-        const spanId = this.readHeader(ctx.headers, this.spanIdKey);
-        const traceId = this.readHeader(ctx.headers, this.traceIdKey);
-        const parentSpanId = this.readHeader(ctx.headers, this.parentSpanIdKey);
-        const sampled = this.readHeader(ctx.headers, this.sampledKey);
-        const debug = this.readHeader(ctx.headers, this.debugKey).flatMap(this.stringToIntOption).getOrElse(0);
+    public eject(headers: Object) {
+        const spanId = this.readHeader(headers, this.spanIdKey);
+        const traceId = this.readHeader(headers, this.traceIdKey);
+        const parentSpanId = this.readHeader(headers, this.parentSpanIdKey);
+        const sampled = this.readHeader(headers, this.sampledKey);
+        const debug = this.readHeader(headers, this.debugKey).flatMap(this.stringToIntOption).getOrElse(0);
         const parentId = spanId.map(sid => new TraceId({
             spanId: sid,
             traceId: traceId,

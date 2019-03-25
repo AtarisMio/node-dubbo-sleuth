@@ -1,10 +1,10 @@
 import debug from 'debug';
-import { HttpHeaders, option, RequestZipkinHeaders, TraceId } from 'zipkin';
+import { HttpHeaders, option, TraceId } from 'zipkin';
 
 const log = debug('dubbo:sleuth:tracing');
 
 export interface IEjector {
-    eject(ctx: RequestZipkinHeaders): option.IOption<TraceId>;
+    eject(headers: Object): option.IOption<TraceId>;
 }
 
 export abstract class AbstractEjector implements IEjector {

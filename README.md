@@ -102,3 +102,50 @@ import zone from 'zone-context';
     );
     // then you will tracing by zipkin. 
 ```
+
+# API
+
+## [Tracing](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/tracing.ts#26) `Singleton Class`
+
+A zipkin management class, singleton.
+
+### Constructor `private`
+
+### Properties
+
+| Property | Description |
+| tracer | [`readonly`] getting [`zipkin.Tracer`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L32) instance |
+| logger | [`readonly`] getting [`zipkin.Logger`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L303) instance, what was set/create at `init` |
+| ip | [`readonly`] getting the ip of server |
+| injector | [`readonly`] A class which impelements [`IInjector`](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/injector.ts#L6) |
+| ejector | [`readonly`] A class which impelements [`IEjector`](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/ejector.ts#L6) |
+| hasRootTracer | Hint of wheter this trace is having a parent. |
+
+### Methods
+
+| Method | Return | Description |
+| init | [`zipkin.Tracer`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L32) instance | [`static`] init tracing instance. [`args`](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/tracing.ts#L12) |
+
+## [Sleuth](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/sleuth.ts#L18) `Highorder function of Dubbo Middleware`
+
+```ts
+sleuth({
+    traceId?: TraceId,
+    ctxName?: string,
+    ctxImpl?: Context<TraceId>,
+    localServiceName: string,
+    endpointHost?: string,
+    endpointPort?: string,
+    endpoint?: string,
+    httpTimeout?: number,
+    jsonEncoder?: JsonEncoder,
+    recorder?: Recorder,
+    injector?: IInjector,
+    ejector?: IEjector,
+}) => ({
+    createTraceId?(tracer: Tracer): TraceId,
+    createSpan?(traceId: TraceId): model.Span,
+    beforeSend?(ctx: Context, span: model.Span): Promise<void>,
+    sendSpan?(span: model.Span): void,
+}) => Dubbo.Middleware
+```

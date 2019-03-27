@@ -1,6 +1,6 @@
 {
   "name": "@58qf/dubbo-sleuth",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A zipkin sleuth impelement for dubbo2.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

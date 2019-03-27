@@ -48,7 +48,7 @@ export const dubbo = (app: Application) => {
         localServiceName: app.config.name || 'egg',
         // endpointHost: 'localhost',
         // endpointPort: '9411',
-    }));
+    })());
 
     const oldReady = dubbo.ready.bind(dubbo);
     dubbo.ready = async () => {

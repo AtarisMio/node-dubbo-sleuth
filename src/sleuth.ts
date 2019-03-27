@@ -15,7 +15,7 @@ interface IWhatYouWantToDo {
     sendSpan?(span: model.Span): void;
 }
 
-export function sleuth(args: IConstructorArgs): (args: IWhatYouWantToDo) => Function {
+export function sleuth(args: IConstructorArgs): (args?: IWhatYouWantToDo) => Function {
     log('[initialize] Sleuth');
     const tracer = Tracing.init(args);
     return ({

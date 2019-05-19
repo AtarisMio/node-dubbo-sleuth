@@ -114,6 +114,7 @@ A zipkin management class, singleton.
 ### Properties
 
 | Property | Description |
+|-|-|
 | tracer | [`readonly`] getting [`zipkin.Tracer`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L32) instance |
 | logger | [`readonly`] getting [`zipkin.Logger`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L303) instance, what was set/create at `init` |
 | ip | [`readonly`] getting the ip of server |
@@ -124,6 +125,7 @@ A zipkin management class, singleton.
 ### Methods
 
 | Method | Return | Description |
+|-|-|-|
 | init | [`zipkin.Tracer`](https://github.com/openzipkin/zipkin-js/blob/master/packages/zipkin/index.d.ts#L32) instance | [`static`] init tracing instance. [`args`](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/tracing.ts#L12) |
 
 ## [Sleuth](https://github.com/AtrisMio/node-dubbo-sleuth/blob/master/src/sleuth.ts#L18) `Highorder function of Dubbo Middleware`

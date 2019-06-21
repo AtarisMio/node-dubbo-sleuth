@@ -1,0 +1,43 @@
+{
+  "name": "node-dubbo-sleuth",
+  "version": "0.0.0",
+  "description": "A zipkin sleuth impelement for dubbo2.js",
+  "keywords": [
+    "zipkin",
+    "sleuth",
+    "dubbo"
+  ],
+  "author": "xuhang <xuhang@58qf.com>",
+  "homepage": "https://github.com/AtrisMio/node-dubbo-sleuth#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npm.taobao.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtrisMio/node-dubbo-sleuth.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/AtrisMio/node-dubbo-sleuth/issues"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "dubbo2.js": "^2.3.9",
+    "node-sleuth": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.4",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.2"
+  }
+}

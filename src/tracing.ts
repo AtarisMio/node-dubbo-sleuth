@@ -2,12 +2,10 @@ import debug from 'debug';
 import { BatchRecorder, Context, InetAddress, jsonEncoder as Encoder, JsonEncoder, Logger, Recorder, TraceId, Tracer } from 'zipkin';
 import CLSContext from 'zipkin-context-cls';
 import { HttpLogger } from 'zipkin-transport-http';
-import { Ejector, IEjector } from './ejector';
-import { IInjector, Injector } from './injector';
+import { IEjector, HttpEjector } from './ejector';
+import { IInjector, DubboInjector } from './injector';
 
 const log = debug('dubbo:sleuth:tracing');
-
-// const MyConsole = new Proxy<Console>({} as any, { get(_, p) { return log.bind(log, p); } });
 
 export interface IConstructorArgs {
     traceId?: TraceId;
@@ -23,6 +21,7 @@ export interface IConstructorArgs {
     injector?: IInjector;
     ejector?: IEjector;
 }
+
 export class Tracing {
     private static _tracer: Tracer;
     private static _logger: Logger;
@@ -106,12 +105,12 @@ export class Tracing {
         if (args.injector) {
             Tracing._injector = args.injector;
         } else {
-            Tracing._injector = new Injector();
+            Tracing._injector = new DubboInjector();
         }
         if (args.ejector) {
             Tracing._ejector = args.ejector;
         } else {
-            Tracing._ejector = new Ejector();
+            Tracing._ejector = new HttpEjector();
         }
         return Tracing.tracer;
     }

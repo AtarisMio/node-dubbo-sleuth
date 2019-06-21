@@ -33,12 +33,13 @@
   },
   "homepage": "https://github.com/AtrisMio/node-dubbo-sleuth#readme",
   "devDependencies": {
+    "@58qf/dubbo2.js": "^2.3.0-alpha.0",
     "@types/debug": "^4.1.2",
     "@types/js-to-java": "^2.4.0",
+    "@types/koa": "^2.0.48",
     "@types/node": "^11.11.4",
     "@types/zipkin-context-cls": "^0.11.2",
     "@types/zipkin-transport-http": "^0.11.2",
-    "@58qf/dubbo2.js": "^2.3.0-alpha.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.3.4000"
   },

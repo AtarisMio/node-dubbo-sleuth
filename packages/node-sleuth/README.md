@@ -14,7 +14,7 @@ import { Tracing, ProxyInjector } from 'node-sleuth';
 Tracing.init({
     localServiceName: 'systemname',
     endpointHost: 'localhost',
-    endpointPort: 9441,
+    endpointPort: 9411,
     injector: new ProxyInjector(),
 });
 ```

@@ -36,7 +36,7 @@ export interface IConstructorArgs {
     /**
      * zipkin server port, `http://${endpointHost}:${endpointPort}/api/v2/spans`
      */
-    endpointPort?: string;
+    endpointPort?: string | number;
     /**
      * zipkin server endpoint, will ignore `endpointHost`, `endpointPort`
      */

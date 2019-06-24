@@ -40,7 +40,7 @@ export default class AppBootHook implements IBoot {
         Tracing.init({
             localServiceName: 'systemname',
             endpointHost: 'localhost',
-            endpointPort: 9441,
+            endpointPort: 9411,
             injector: new DubboInjector(),
         });
     }

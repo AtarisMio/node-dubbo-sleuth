@@ -17,9 +17,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "registry": "http://registry.npm.taobao.org"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtrisMio/node-dubbo-sleuth.git"

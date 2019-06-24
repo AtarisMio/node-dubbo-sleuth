@@ -1,8 +1,7 @@
-import { Context } from 'koa';
 import { HttpHeaders, TraceId } from 'zipkin';
 import { AbstractInjector } from './abstract-injector';
 
-export class HttpInjector extends AbstractInjector {
+export class ProxyInjector extends AbstractInjector {
     public static readonly TRACE_ID_NAME = HttpHeaders.TraceId; // traceIdKey -> 'X-B3-TraceId'
     public static readonly SPAN_ID_NAME = HttpHeaders.SpanId; // spanIdKey -> 'X-B3-SpanId'
     public static readonly PARENT_SPAN_ID_NAME = HttpHeaders.ParentSpanId; // parentSpanIdKey -> 'X-B3-ParentSpanId'
@@ -11,25 +10,20 @@ export class HttpInjector extends AbstractInjector {
 
     constructor() {
         super(
-            HttpInjector.TRACE_ID_NAME,
-            HttpInjector.SPAN_ID_NAME,
-            HttpInjector.PARENT_SPAN_ID_NAME,
-            HttpInjector.SAMPLED_NAME,
-            HttpInjector.FLAGS_NAME,
+            ProxyInjector.TRACE_ID_NAME,
+            ProxyInjector.SPAN_ID_NAME,
+            ProxyInjector.PARENT_SPAN_ID_NAME,
+            ProxyInjector.SAMPLED_NAME,
+            ProxyInjector.FLAGS_NAME,
         );
     }
 
     /**
-     * inject traceId into http response header
-     * @param ctx koa context
+     * inject traceId into proxy request header
+     * @param headers proxy request header
      * @param traceId trace id
      */
-    public inject(ctx: Context, traceId: TraceId) {
-        super.inject(new Proxy(ctx, {
-            set(ctx, p, value) {
-                ctx.set(p as string, value);
-                return true;
-            },
-        }), traceId);
+    public inject(headers: Object, traceId: TraceId) {
+        super.inject(headers, traceId);
     }
 }

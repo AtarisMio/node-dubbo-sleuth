@@ -25,19 +25,26 @@
     "url": "git+https://github.com/AtrisMio/node-dubbo-sleuth.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "rimraf ./lib",
+    "build": "npm run clean && tsc -p .",
+    "prepublish": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/AtrisMio/node-dubbo-sleuth/issues"
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "dubbo2.js": "^2.3.9",
     "node-sleuth": "^0.0.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.4",
+    "dubbo2.js": "^2.3.9",
+    "js-to-java": "^2.6.1",
     "rimraf": "^2.6.3",
     "typescript": "^3.5.2"
+  },
+  "peerDependencies": {
+    "dubbo2.js": "^2.3.9",
+    "js-to-java": "^2.6.1"
   }
 }

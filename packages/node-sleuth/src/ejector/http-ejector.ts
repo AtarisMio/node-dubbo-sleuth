@@ -19,6 +19,10 @@ export class HttpEjector extends AbstractEjector {
         );
     }
 
+    /**
+     * eject trace id from http request header
+     * @param ctx koa context
+     */
     public eject(ctx: Context) {
         return super.eject(ctx.headers);
     }

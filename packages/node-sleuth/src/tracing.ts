@@ -13,17 +13,53 @@ export const Endpoint = model.Endpoint;
 export type Endpoint = model.Endpoint;
 
 export interface IConstructorArgs {
+    /**
+     * root trace id
+     */
     traceId?: TraceId;
+    /**
+     * context name, if you have multiple sleuth it is useful, default `zipkin`
+     */
     ctxName?: string;
+    /**
+     * context implement, default `zipkin-context-cls`
+     */
     ctxImpl?: Context<TraceId>;
+    /**
+     * current system name, will report to zipkin server
+     */
     localServiceName: string;
+    /**
+     * zipkin server host, `http://${endpointHost}:${endpointPort}/api/v2/spans`
+     */
     endpointHost?: string;
+    /**
+     * zipkin server port, `http://${endpointHost}:${endpointPort}/api/v2/spans`
+     */
     endpointPort?: string;
+    /**
+     * zipkin server endpoint, will ignore `endpointHost`, `endpointPort`
+     */
     endpoint?: string;
+    /**
+     * timeout for send zipkin trace
+     */
     httpTimeout?: number;
+    /**
+     * zipkin json encoder
+     */
     jsonEncoder?: JsonEncoder;
+    /**
+     * zipkin recorder
+     */
     recorder?: Recorder;
+    /**
+     * injector, inject `traceId` to next service
+     */
     injector?: IInjector;
+    /**
+     * ejector, eject `traceId` from previous service
+     */
     ejector?: IEjector;
 }
 

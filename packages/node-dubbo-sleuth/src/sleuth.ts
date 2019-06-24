@@ -1,6 +1,6 @@
-import { Context, java } from '@58qf/dubbo2.js';
+import { Context, java } from 'dubbo2.js';
 import debug from 'debug';
-import { Endpoint, IConstructorArgs, Span, TraceId, Tracer, Tracing } from 'node-sleuth';
+import { Endpoint, Span, TraceId, Tracer, Tracing } from 'node-sleuth';
 
 const log = debug('dubbo:sleuth');
 
@@ -11,16 +11,15 @@ interface IWhatYouWantToDo {
     sendSpan?(span: Span): void;
 }
 
-export function sleuth(args: IConstructorArgs): (whatYouWantToDo?: IWhatYouWantToDo) => Function {
-    log('[initialize] Sleuth');
-    const tracer = Tracing.init(args);
-    return ({
-        createTraceId = (tracer: Tracer) => Tracing.hasRootTracer ? tracer.createChildId() : tracer.createRootId(),
-        createSpan = (traceId: TraceId) => new Span(traceId),
-        beforeSend = async () => { return; },
-        sendSpan = (span: Span) => Tracing.logger.logSpan(span),
-    }: IWhatYouWantToDo = {}) => async function dubboMiddlewareSleuth(ctx: Context, next: Function) {
-        const traceId = createTraceId(tracer);
+export function sleuth({
+    createTraceId = (tracer: Tracer) => Tracing.hasRootTracer ? tracer.createChildId() : tracer.createRootId(),
+    createSpan = (traceId: TraceId) => new Span(traceId),
+    beforeSend = async () => { return; },
+    sendSpan = (span: Span) => Tracing.logger.logSpan(span),
+}: IWhatYouWantToDo = {}) {
+    return async function dubboMiddlewareSleuth(ctx: Context, next: Function) {
+        const traceId = createTraceId(Tracing.tracer);
+        log('[info] traceId %s', traceId.traceId);
         const span = createSpan(traceId);
 
         span.setKind('CLIENT');

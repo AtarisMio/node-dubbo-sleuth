@@ -2,6 +2,8 @@
 
 > A zipkin sleuth impelement for general node.
 
+[![NPM](https://nodei.co/npm/node-dubbo-sleuth.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-dubbo-sleuth)
+
 ## Usage
 
 ### init node-sleuth at startup

@@ -1,0 +1,47 @@
+{
+  "name": "node-sleuth",
+  "version": "0.0.0",
+  "description": "A zipkin sleuth impelement for general node.",
+  "keywords": [
+    "zipkin",
+    "sleuth"
+  ],
+  "author": "xuhang <xuhang@58qf.com>",
+  "homepage": "https://github.com/AtrisMio/node-dubbo-sleuth#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtrisMio/node-dubbo-sleuth.git"
+  },
+  "scripts": {
+    "clean": "rimraf ./lib",
+    "build": "npm run clean && tsc -p .",
+    "prepublish": "npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/AtrisMio/node-dubbo-sleuth/issues"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "zipkin": "^0.18.1",
+    "zipkin-context-cls": "^0.18.0",
+    "zipkin-transport-http": "^0.18.1"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.4",
+    "@types/koa": "^2.0.48",
+    "@types/node": "^12.0.8",
+    "@types/zipkin-context-cls": "^0.11.2",
+    "@types/zipkin-transport-http": "^0.11.2",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.2"
+  }
+}

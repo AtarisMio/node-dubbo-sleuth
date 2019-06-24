@@ -1,54 +1,7 @@
 {
-  "name": "dubbo-sleuth",
-  "version": "0.2.3",
-  "description": "A zipkin sleuth impelement for dubbo2.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "npm run clean && tsc -p .",
-    "prepublish": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AtrisMio/node-dubbo-sleuth.git"
-  },
-  "directories": {
-    "dist": "dist"
-  },
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
-  "keywords": [
-    "dubbo",
-    "zipkin",
-    "sleuth"
-  ],
-  "author": "Ataris <ataris@sina.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/AtrisMio/node-dubbo-sleuth/issues"
-  },
-  "homepage": "https://github.com/AtrisMio/node-dubbo-sleuth#readme",
+  "name": "root",
+  "private": true,
   "devDependencies": {
-    "@types/debug": "^4.1.2",
-    "@types/js-to-java": "^2.4.0",
-    "@types/node": "^11.11.4",
-    "@types/zipkin-context-cls": "^0.11.2",
-    "@types/zipkin-transport-http": "^0.11.2",
-    "dubbo2.js": "^2.3.8",
-    "rimraf": "^2.6.3",
-    "typescript": "^3.3.4000"
-  },
-  "dependencies": {
-    "debug": "^4.1.1",
-    "zipkin": "^0.16.2",
-    "zipkin-context-cls": "^0.16.0",
-    "zipkin-transport-http": "^0.16.2"
-  },
-  "peerDependencies": {
-    "dubbo2.js": "^2.3.8"
+    "lerna": "^3.4.3"
   }
 }

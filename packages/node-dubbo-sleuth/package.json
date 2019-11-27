@@ -1,6 +1,6 @@
 {
   "name": "node-dubbo-sleuth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A zipkin sleuth impelement for dubbo2.js",
   "keywords": [
     "zipkin",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "debug": "^4.1.1",
-    "node-sleuth": "^1.0.0"
+    "node-sleuth": "^1.0.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.4",

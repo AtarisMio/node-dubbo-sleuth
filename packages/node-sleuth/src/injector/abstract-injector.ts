@@ -17,8 +17,8 @@ export abstract class AbstractInjector implements IInjector {
         attachments[this.traceIdKey] = traceId.traceId;
         attachments[this.spanIdKey] = traceId.spanId;
         // traceId.parentId !== traceId.spanId 的条件从brave的传输的具体数据来看是这样的
-        if (traceId.parentId && traceId.parentId !== traceId.spanId) {
-            attachments[this.parentSpanIdKey] = traceId.parentId;
+        if (traceId.parentSpanId && traceId.parentSpanId.getOrElse('') === traceId.spanId) {
+            attachments[this.parentSpanIdKey] = traceId.spanId;
         }
         if (traceId.isDebug()) {
             attachments[this.debugKey] = '1';

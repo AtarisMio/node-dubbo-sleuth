@@ -21,26 +21,24 @@ export abstract class AbstractEjector implements IEjector {
         return str === '1' || str === 'true';
     }
 
-    private stringToIntOption(str: string): option.IOption<number> {
-        try {
-            return new option.Some(Number.parseInt(str));
-        } catch (err) {
-            return option.None;
-        }
-    }
+    // private stringToIntOption(str: string): option.IOption<number> {
+    //     try {
+    //         return new option.Some(Number.parseInt(str));
+    //     } catch (err) {
+    //         return option.None;
+    //     }
+    // }
 
     public eject(obj: Object) {
         const spanId = this.readOption(obj, this.spanIdKey);
-        const traceId = this.readOption(obj, this.traceIdKey);
+        const traceId = this.readOption(obj, this.traceIdKey).getOrElse('');
         const parentSpanId = this.readOption(obj, this.parentSpanIdKey);
         const sampled = this.readOption(obj, this.sampledKey);
-        const debug = this.readOption(obj, this.debugKey).flatMap(this.stringToIntOption).getOrElse(0);
         const parentId = spanId.map(sid => new TraceId({
             spanId: sid,
             traceId: traceId,
             parentId: parentSpanId,
             sampled: sampled.map(this.stringToBoolean),
-            flags: debug,
         }));
         parentId.ifPresent(pid => log(`[eject] ${pid.toString()}`));
         return parentId;

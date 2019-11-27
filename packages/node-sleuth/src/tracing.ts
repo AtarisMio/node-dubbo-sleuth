@@ -126,7 +126,7 @@ export class Tracing {
         const context: Context<TraceId> = ctxImpl ? ctxImpl : new CLSContext(ctxName) as unknown as Context<TraceId>;
         Tracing._logger = InputRecorder ? (InputRecorder as any).logger : new HttpLogger({
             endpoint: endpoint ? endpoint : `http://${endpointHost}:${endpointPort}/api/v2/spans`,
-            httpTimeout,
+            timeout: httpTimeout,
             jsonEncoder,
             // log: MyConsole,
         });

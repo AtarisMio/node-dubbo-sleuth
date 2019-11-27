@@ -3,6 +3,7 @@
 ---
 
 [![NPM](https://nodei.co/npm/node-dubbo-sleuth.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-dubbo-sleuth)
+[![NPM](https://nodei.co/npm/dubbo-sleuth.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dubbo-sleuth)
 
 dubbo-sleuth = dubbo2.js + zipkin-js
 
